@@ -69,7 +69,7 @@ INSERT INTO DEPT (DEPTNO, DNAME, LOC) VALUES (40, 'OPERATIONS', 'BOSTON');
 
 
 ### QUERY:
-```
+```sql
 SQL> SELECT ename FROM emp1 WHERE sal > (SELECT sal FROM emp1 WHERE empno = 7566);
 ```
 ### OUTPUT:
@@ -78,7 +78,7 @@ SQL> SELECT ename FROM emp1 WHERE sal > (SELECT sal FROM emp1 WHERE empno = 7566
 ### Q2) List the ename,job,sal of the employee who get minimum salary in the company.
 
 ### QUERY:
-```
+```sql
 SQL> SELECT ename, job, sal FROM emp1 WHERE sal = (SELECT min(sal) FROM emp1);
 ```
 ### OUTPUT:
@@ -87,7 +87,7 @@ SQL> SELECT ename, job, sal FROM emp1 WHERE sal = (SELECT min(sal) FROM emp1);
 ### Q3) List ename, job of the employees who work in deptno 10 and his/her job is any one of the job in the department ‘SALES’.
 
 ### QUERY:
-```
+```sql
 SQL> SELECT ename, job FROM emp1 WHERE deptno = 10 AND job IN (SELECT job FROM emp1 WHERE job = 'SALES');
 ```
 ### OUTPUT:
@@ -97,7 +97,7 @@ SQL> SELECT ename, job FROM emp1 WHERE deptno = 10 AND job IN (SELECT job FROM e
 ### Q4) Create a view empv5 (for the table emp) that contains empno, ename, job of the employees who work in dept 10.
 
 ### QUERY:
-```
+```sql
 SQL> CREATE VIEW empv5 AS SELECT empno, ename, job FROM emp1 WHERE deptno = 10;
 ```
 ### OUTPUT:
@@ -106,7 +106,7 @@ SQL> CREATE VIEW empv5 AS SELECT empno, ename, job FROM emp1 WHERE deptno = 10;
 ### Q5) Create a view with column aliases empv30 that contains empno, ename, sal of the employees who work in dept 30. Also display the contents of the view.
 
 ### QUERY:
-```
+```sql
 SQL> CREATE VIEW empv30 AS SELECT empno AS "EMPLOYEE NUMBER", ename AS "EMPLOYEE NAME", sal AS "SALARY" FROM emp1 WHERE deptno = 30;
 ```
 ### OUTPUT:
@@ -115,7 +115,7 @@ SQL> CREATE VIEW empv30 AS SELECT empno AS "EMPLOYEE NUMBER", ename AS "EMPLOYEE
 ### Q6) Update the view empv5 by increasing 10% salary of the employees who work as ‘CLERK’. Also confirm the modifications in emp table
 
 ### QUERY:
-```
+```sql
 SQL> UPDATE empv5 SET sal = sal * 1.1 WHERE job = 'CLERK';
 ```
 ### OUTPUT:
@@ -152,7 +152,7 @@ INSERT INTO Salesman1 (salesman_id, name, city, commission) VALUES(5003, 'Lauson
 ### Q7) Write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
 
 ### QUERY:
-```
+```sql
 SQL> SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name", salesman1.city AS "City" FROM salesman1 INNER JOIN customer1 ON salesman1.city = customer1.city;
 ```
 ### OUTPUT:
@@ -162,7 +162,7 @@ SQL> SELECT salesman1.name AS "Salesman", customer1.cust_name AS "Customer Name"
 
 
 ### QUERY:
-```
+```sql
 SQL> SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer City", salesman1.commission AS "Commission" FROM salesman1 INNER JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id WHERE salesman1.commission > 0.13;
 ```
 ### OUTPUT:
@@ -171,7 +171,7 @@ SQL> SELECT customer1.cust_name AS "Customer Name", customer1.city AS "Customer 
 ### Q9) Perform Natural join on both tables
 
 ### QUERY:
-```
+```sql
 SQL> SELECT * FROM customer1 NATURAL JOIN salesman1;
 ```
 ### OUTPUT:
@@ -180,7 +180,7 @@ SQL> SELECT * FROM customer1 NATURAL JOIN salesman1;
 ### Q10) Perform Left and right join on both tables
 
 ### QUERY:
-```
+```sql
 SQL> SELECT * FROM salesman1 LEFT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
 SQL> SELECT * FROM salesman1 RIGHT JOIN customer1 ON salesman1.salesman_id = customer1.salesman_id;
 ```
